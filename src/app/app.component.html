@@ -1,1 +1,8 @@
-<router-outlet></router-outlet>
+<input class="game-searcher" placeholder="Search some playstation game" type="search" /> <button>Search</button>
+
+<div>
+  <div class="item" *ngFor="let item of items">
+    <img [title]="item.name" [src]="item.thumbBase" />
+    <span>{{item.name}}</span>
+  </div>
+</div>

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Item } from './shared/domain/item.model';
+import { ItemType } from './shared/domain/item-type.enum';
 import { SearchService } from './shared/playstation-api/search.service';
 
 @Component({
@@ -8,15 +10,15 @@ import { SearchService } from './shared/playstation-api/search.service';
   styleUrls: ['./app.component.less']
 })
 export class AppComponent implements OnInit {
-  title = 'playstation-game-flight-deck';
+  items: Item[] = [];
 
   constructor(
     private searchService: SearchService
   ) { }
 
   ngOnInit(): void {
-    this.searchService.search('uncharted').subscribe(
-      (data) => document.write(JSON.stringify(data)),
+    this.searchService.search('uncharted', ItemType.GAME, 100).subscribe(
+      items => this.items = items,
       err => console.info(err)
     );
   }
