@@ -4,4 +4,4 @@ For playstation players who want to better organize the games they want to buy, 
 
 ![How it look likes](playstation-search.png)
 
-Have fun into out github page [by clicking here](https://karma-runner.github.io).
+Have fun into out github page [by clicking here](https://lordazzi.github.io/playstation-game-flight-deck/?q=crash).
