@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 import { Item } from './shared/domain/item.model';
 import { ItemType } from './shared/domain/item-type.enum';
@@ -13,6 +13,9 @@ export class AppComponent implements OnInit {
 
   items: Item[] = [];
 
+  @ViewChild('searchInput')
+  searchInput: ElementRef;
+
   constructor(
     private searchService: SearchService
   ) { }
@@ -22,6 +25,7 @@ export class AppComponent implements OnInit {
     setTimeout(() => {
       const initialSearch = location.search.replace(/^.*q=/, '');
       if (initialSearch) {
+        this.searchInput.nativeElement.value = initialSearch;
         this.search(initialSearch);
       }
     });
