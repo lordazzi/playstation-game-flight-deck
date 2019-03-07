@@ -9,15 +9,16 @@ import { SearchService } from './shared/playstation-api/search.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.less']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
+
   items: Item[] = [];
 
   constructor(
     private searchService: SearchService
   ) { }
 
-  ngOnInit(): void {
-    this.searchService.search('uncharted', ItemType.GAME, 100).subscribe(
+  search(searchFor: string) {
+    this.searchService.search(searchFor, ItemType.GAME, 100).subscribe(
       items => this.items = items,
       err => console.info(err)
     );

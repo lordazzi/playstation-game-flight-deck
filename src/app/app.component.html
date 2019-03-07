@@ -1,4 +1,5 @@
-<input class="game-searcher" placeholder="Search some playstation game" type="search" /> <button>Search</button>
+<input #searchInput class="game-searcher" placeholder="Search some playstation game" type="search" />
+<button (click)="search(searchInput.value)">Search</button>
 
 <div>
   <div class="item" *ngFor="let item of items">

@@ -11,7 +11,7 @@ import { map } from 'rxjs/operators';
 })
 export class SearchService {
 
-  private readonly server = 'https://store.playstation.com/valkyrie-api/pt/BR/19/tumbler-search/uncharted?suggested_size=5&mode=game';
+  private readonly server = 'https://store.playstation.com/valkyrie-api/pt/BR/19/tumbler-search/';
 
   constructor(
     private http: HttpClient
