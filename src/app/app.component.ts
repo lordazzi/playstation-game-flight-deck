@@ -9,13 +9,23 @@ import { SearchService } from './shared/playstation-api/search.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.less']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   items: Item[] = [];
 
   constructor(
     private searchService: SearchService
   ) { }
+
+  ngOnInit(): void {
+    //  FIXME: criar serviço de tick
+    setTimeout(() => {
+      const initialSearch = location.search.replace(/^.*q=/, '');
+      if (initialSearch) {
+        this.search(initialSearch);
+      }
+    });
+  }
 
   search(searchFor: string) {
     this.searchService.search(searchFor, ItemType.GAME, 100).subscribe(
