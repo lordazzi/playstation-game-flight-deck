@@ -1,0 +1,10 @@
+<input #searchInput class="game-searcher" placeholder="Search some playstation game" type="search" />
+<button (click)="search(searchInput.value)">Search</button>
+
+<div *ngIf="!items.length">Nenhum item foi encontrado</div>
+<div *ngIf="items.length">
+  <div class="item" *ngFor="let item of items">
+    <img [title]="item.name" [src]="item.thumbBase" />
+    <span>{{item.name}}</span>
+  </div>
+</div>
