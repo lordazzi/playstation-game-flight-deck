@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Item } from '../domain/item.model';
-import { ItemType } from '../domain/item-type.enum';
 import { Observable } from 'rxjs';
-import { SearchResultSet } from './search-result-set.interface';
 import { map } from 'rxjs/operators';
+import { ItemType } from '../domain/item-type.enum';
+import { Item } from '../domain/item.model';
+import { SearchResultSet } from './search-result-set.interface';
 
 @Injectable({
   providedIn: 'root'
