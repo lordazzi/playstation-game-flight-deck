@@ -29,6 +29,8 @@ export class AppComponent implements OnInit {
         this.search(initialSearch);
       }
     });
+
+    // javascript:!function(){let xhr;xhr = new XMLHttpRequest();xhr.open('POST', 'https://store.playstation.com/kamaji/api/valkyrie_storefront/00_09_000/gateway/store/v1/users/me/notification/download', false);xhr.setRequestHeader('accept', '*/*');xhr.setRequestHeader('content-type', 'application/json');xhr.send(JSON.stringify({"notifications":[{"clientId":1,"platformString":"ps4","entitlementId":"UP2124-CUSA00498_00-THEWITNESSPS4PS4"}]}));}();
   }
 
   search(searchFor: string) {

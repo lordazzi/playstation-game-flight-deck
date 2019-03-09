@@ -3,7 +3,7 @@
   "version": "1.0.1",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "dev": "ng serve --base-href=/playstation-game-flight-deck/",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
