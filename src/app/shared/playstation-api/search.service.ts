@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { ItemType } from '../domain/item-type.enum';
-import { Item } from '../domain/item.model';
+import { PSItemType } from '../domain/ps-item-type.enum';
+import { PSItem } from '../domain/ps-item.model';
 import { SearchResultSet } from './search-result-set.interface';
 
 @Injectable({
@@ -17,7 +17,7 @@ export class SearchService {
     private http: HttpClient
   ) { }
 
-  search(keyword: string, mode = ItemType.GAME, maxlength = 5): Observable<Item[]> {
+  search(keyword: string, mode = PSItemType.GAME, maxlength = 5): Observable<PSItem[]> {
     return this.http.get<SearchResultSet>(`${this.server}/${keyword}`, {
       params: {
         suggested_size: String(maxlength),
@@ -26,12 +26,12 @@ export class SearchService {
     }).pipe(map(resultSet => this.bff(resultSet)));
   }
 
-  private bff(resultSet: SearchResultSet): Item[] {
+  private bff(resultSet: SearchResultSet): PSItem[] {
     const items = [];
     resultSet.included.forEach(someFoundThing => {
-      const item = new Item();
+      const item = new PSItem();
       item.id = someFoundThing.id;
-      item.type = someFoundThing.type as ItemType;
+      item.type = someFoundThing.type as PSItemType;
       item.name = someFoundThing.attributes.name;
       item.thumbBase = someFoundThing.attributes['thumbnail-url-base'] + '?w=150&h=150&bg_color=000000&opacity=100';
       items.push(item);

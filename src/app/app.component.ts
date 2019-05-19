@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
-import { Item } from './shared/domain/item.model';
-import { ItemType } from './shared/domain/item-type.enum';
+import { PSItem } from './shared/domain/ps-item.model';
+import { PSItemType } from './shared/domain/ps-item-type.enum';
 import { SearchService } from './shared/playstation-api/search.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { SearchService } from './shared/playstation-api/search.service';
 })
 export class AppComponent implements OnInit {
 
-  items: Item[] = [];
+  items: PSItem[] = [];
 
   @ViewChild('searchInput')
   searchInput: ElementRef;
@@ -32,7 +32,7 @@ export class AppComponent implements OnInit {
   }
 
   search(searchFor: string) {
-    this.searchService.search(searchFor, ItemType.GAME, 100).subscribe(
+    this.searchService.search(searchFor, PSItemType.GAME, 100).subscribe(
       items => this.items = items,
       err => console.info(err)
     );

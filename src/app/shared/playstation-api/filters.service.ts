@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { FiltersResultSet } from './filters-result-set.interface';
 import { FindBoardNameResultSet } from './find-board-name-result-set.interface';
+import { PSItem } from '../domain/ps-item.model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class FiltersService {
     private http: HttpClient
   ) { }
 
-  findFilters(boardName?: string): Observable<Item[]> {
+  findFilters(boardName?: string): Observable<PSItem[]> {
     return this.http.get<FiltersResultSet>(
       `${this.findFiltersServer}/${boardName}`
     ).pipe(map(resultSet => this.bffFindFilter(resultSet)));
@@ -29,7 +30,8 @@ export class FiltersService {
     ).pipe(map(resultSet => this.bffFindBoardName(resultSet)));
   }
 
-  private bffFindFilter(resultSet: FiltersResultSet): Item[] {
+  private bffFindFilter(resultSet: FiltersResultSet): PSItem[] {
+    return [];
   }
 
   private bffFindBoardName(resultSet: FindBoardNameResultSet): string {
